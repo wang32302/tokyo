@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>東京之旅 12/2-12/9｜日系繪本手冊</title>
+<link href="https://fonts.googleapis.com/css2?family=Huninn&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+:root{--paper:#FFFCF6;--ink:#3E3A39;--coral:#F2A497;--yellow:#F6D27A;--blue:#A8D3E6;--green:#B9DAA5;--pink-light:#FFE9E3;--yellow-light:#FFF3C4;--blue-light:#E3F2F8;--green-light:#EAF5E2}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Huninn","Noto Sans TC",sans-serif;line-height:1.75;padding-top:62px}
+a{color:var(--ink)}
+/* top menu */
+.top{position:fixed;top:0;left:0;right:0;z-index:50;background:var(--paper);border-bottom:3px solid var(--ink);display:flex;align-items:center;justify-content:space-between;padding:10px 14px}
+.logo{font-weight:900;font-size:19px;letter-spacing:1px;display:flex;gap:8px;align-items:center}
+.logo span{background:var(--yellow);border:3px solid var(--ink);border-radius:999px;padding:2px 10px}
+.nav{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.nav a{text-decoration:none;border:3px solid var(--ink);border-radius:999px;padding:4px 10px;font-size:13px;font-weight:700;background:#fff;white-space:nowrap}
+.nav a:nth-child(2){background:var(--blue)} .nav a:nth-child(3){background:var(--coral)} .nav a:nth-child(4){background:var(--green)} .nav a:nth-child(5){background:var(--yellow)}
+.wrap{max-width:860px;margin:0 auto;padding:16px 14px 80px}
+.card{background:#fff;border:3px solid var(--ink);border-radius:24px;padding:18px 16px;margin:14px 0;box-shadow:4px 4px 0 var(--ink)}
+.card h2{margin:0 0 8px;font-size:22px;letter-spacing:1px}
+.card h3{margin:16px 0 8px;font-size:17px}
+.badge{display:inline-block;border:3px solid var(--ink);border-radius:999px;padding:2px 10px;font-size:12px;font-weight:800;background:#fff;margin:3px 2px}
+.badge.coral{background:var(--coral)} .badge.yellow{background:var(--yellow)} .badge.blue{background:var(--blue)} .badge.green{background:var(--green)}
+.hero{border:3px solid var(--ink);border-radius:28px;background:#fff;overflow:hidden;box-shadow:4px 4px 0 var(--ink)}
+.hero-illu{background:var(--blue-light);padding:10px 10px 0;text-align:center}
+.hero-text{padding:18px 16px 20px;text-align:center}
+.hero-text h1{margin:0;font-size:38px;line-height:1.15;letter-spacing:4px}
+.hero-text p{margin:8px 0 0;font-size:14px}
+.countdown{display:flex;gap:8px;justify-content:center;margin:14px 0 4px;flex-wrap:wrap}
+.cd{background:var(--yellow);border:3px solid var(--ink);border-radius:18px;padding:8px 10px;min-width:68px;text-align:center}
+.cd b{display:block;font-size:26px;line-height:1}
+.cd span{font-size:12px;font-weight:800}
+.flight-grid{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:640px){.flight-grid{grid-template-columns:1fr 1fr}.flight-grid .wide{grid-column:span 2}}
+.flight{border:3px solid var(--ink);border-radius:20px;padding:14px;background:var(--pink-light)}
+.flight.blue{background:var(--blue-light)} .flight.green{background:var(--green-light)} .flight.yellow{background:var(--yellow-light)}
+.flight .route{font-size:22px;font-weight:900}
+.flight .num{font-size:13px;font-weight:800}
+/* tabs */
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 10px;scrollbar-width:none}
+.tab{flex:0 0 auto;border:3px solid var(--ink);border-radius:999px;padding:8px 14px;background:#fff;font-weight:900;cursor:pointer;font-family:inherit;font-size:14px}
+.tab.active{background:var(--coral);transform:scale(1.05)}
+.tab small{display:block;font-size:11px;font-weight:700}
+.day-panel{display:none}
+.day-panel.active{display:block;animation:pop .35s ease}
+@keyframes pop{0%{transform:scale(.96) translateY(6px);opacity:.4}60%{transform:scale(1.02)}100%{transform:scale(1);opacity:1}}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-6px) rotate(1deg)}}
+.floaty{animation:floaty 3.2s ease-in-out infinite}
+.timeline{position:relative;padding-left:22px}
+.timeline:before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:3px;background:var(--ink);border-radius:99px}
+.t-item{position:relative;margin:0 0 14px;background:#fff;border:3px solid var(--ink);border-radius:18px;padding:12px 12px 10px}
+.t-item:before{content:"";position:absolute;left:-20px;top:16px;width:13px;height:13px;background:var(--yellow);border:3px solid var(--ink);border-radius:50%}
+.t-item .time{font-size:20px;font-weight:900}
+.t-item .title{font-size:16px;font-weight:900;margin:2px 0}
+.t-item p{margin:4px 0 0;font-size:14px}
+.tag{display:inline-block;border:2px solid var(--ink);border-radius:999px;padding:1px 8px;font-size:11px;font-weight:900;margin:2px 2px 0 0;background:#fff}
+.tag.walk{background:var(--green)} .tag.jr{background:var(--blue)} .tag.metro{background:var(--yellow)} .tag.bus{background:var(--coral)} .tag.shin{background:#fff} .tag.taxi{background:var(--pink-light)}
+.must{display:inline-block;background:var(--ink);color:#fff;border-radius:999px;padding:1px 8px;font-size:11px;font-weight:900;margin-left:6px}
+.note{background:var(--yellow-light);border:3px dashed var(--ink);border-radius:16px;padding:10px 12px;font-size:13px;margin:10px 0}
+.check{display:flex;gap:10px;align-items:flex-start;border:3px solid var(--ink);border-radius:16px;padding:10px 12px;margin:8px 0;background:#fff;cursor:pointer}
+.check input{width:22px;height:22px;accent-color:var(--ink);margin-top:2px;flex-shrink:0}
+.check.done{opacity:.55;text-decoration:line-through}
+.check b{font-size:14px}
+.check span{font-size:12px;color:#666;display:block}
+.grid2{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:640px){.grid2{grid-template-columns:1fr 1fr}}
+.small{font-size:13px;color:#555}
+table{width:100%;border-collapse:collapse;font-size:14px}
+td,th{border-bottom:2px solid #eee;padding:8px 6px;text-align:left;vertical-align:top}
+.footer{ text-align:center;font-size:13px;padding:20px 0}
+@media (prefers-reduced-motion: reduce){
+  *,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .floaty{animation:none}
+}
+</style>
+</head>
+<body>
+<header class="top"><div class="logo"><span>● 東京</span> 12/2 — 12/9</div><nav class="nav"><a href="#home">首頁</a><a href="#flight">航班</a><a href="#days">行程</a><a href="#stay">住宿</a><a href="#list">清單</a></nav></header>
+
+<div class="wrap" id="home">
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-illu">
+      <svg viewBox="0 0 720 240" width="100%" height="auto" role="img" aria-label="富士山與晴空塔插圖" class="floaty">
+        <rect x="0" y="0" width="720" height="240" fill="#E3F2F8"/>
+        <circle cx="610" cy="48" r="28" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
+        <path d="M80 190 L280 40 L480 190 Z" fill="#fff" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M280 40 L350 110 L300 110 L340 150 L260 110 L300 110 Z" fill="#A8D3E6" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+        <rect x="100" y="190" width="420" height="18" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3"/>
+        <g><rect x="540" y="90" width="22" height="110" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/><rect x="528" y="78" width="46" height="14" fill="#fff" stroke="#3E3A39" stroke-width="3" rx="6"/><line x1="551" y1="78" x2="551" y2="58" stroke="#3E3A39" stroke-width="3"/><circle cx="551" cy="54" r="5" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/></g>
+        <g><rect x="80" y="165" width="64" height="28" fill="#F2A497" stroke="#3E3A39" stroke-width="3" rx="8"/><circle cx="98" cy="162" r="10" fill="#fff" stroke="#3E3A39" stroke-width="3"/><circle cx="126" cy="162" r="10" fill="#fff" stroke="#3E3A39" stroke-width="3"/></g>
+        <path d="M180 190 Q220 160 260 190" fill="none" stroke="#3E3A39" stroke-width="3" stroke-linecap="round"/>
+        <text x="360" y="225" text-anchor="middle" font-size="13" font-weight="900" fill="#3E3A39">富士山 ・ 晴空塔 ・ 淺草 ・ 鎌倉</text>
+      </svg>
+    </div>
+    <div class="hero-text">
+      <div><span class="badge coral">5 個人一起走</span><span class="badge yellow">不拆開</span><span class="badge blue">中野住 7 晚</span><span class="badge green">2 人不吃海鮮</span></div>
+      <h1>東京之旅<br>12/2 — 12/9</h1>
+      <p>高雄出發，中野住宿，富士山、鎌倉、哈利波特、SHIBUYA SKY，一次走完。<br>餐廳都不訂位，現場彈性決定，肉要有品質。</p>
+      <div class="countdown" id="countdown">
+        <div class="cd"><b id="cd-d">--</b><span>天</span></div>
+        <div class="cd"><b id="cd-h">--</b><span>小時</span></div>
+        <div class="cd"><b id="cd-m">--</b><span>分</span></div>
+        <div class="cd"><b id="cd-s">--</b><span>秒</span></div>
+      </div>
+      <p class="small" id="cd-label">出發日 12/2（三）13:05 CI126 高雄 → 成田</p>
+      <div style="margin-top:10px"><span class="badge">總費用 NT$182,789</span><span class="badge yellow">每人平均 NT$36,558</span><span class="badge green">公費 NT$24,000 只付大餐</span></div>
+    </div>
+  </div>
+
+  <!-- FLIGHT -->
+  <div class="card" id="flight"><h2>✈️ 航班卡片</h2><p class="small">去程一起走，回程分兩班。回程 2 人台北、3 人高雄。</p>
+    <div class="flight-grid">
+      <div class="flight"><div class="num">去程・12/2（三）・5 人一起</div><div class="route">高雄 → 成田</div><div style="font-size:28px;font-weight:900">13:05 <span style="font-size:14px">→</span> 17:25</div><div><span class="badge coral">CI126 華航</span><span class="badge">第 2 航廈到</span></div><p class="small">17:25 落地 → 拿行李 → 搭車去中野 → 20:00 辦入住 → 20:30 吃牛重。第一天直接去住宿，不繞路。</p></div>
+      <div class="flight blue"><div class="num">回程・12/9（三）・2 人</div><div class="route">成田 → 台北</div><div style="font-size:28px;font-weight:900">17:45 <span style="font-size:14px">→</span> 20:55</div><div><span class="badge blue">CI105 華航</span><span class="badge">15:30 先辦登機</span></div><p class="small">10:15 中野退房 → 11:10 京成上野換票 → 12:00 Skyliner → 12:40 成田 → 機場吃午餐。</p></div>
+      <div class="flight green wide"><div class="num">回程・12/9（三）・3 人</div><div class="route">成田 → 高雄</div><div style="font-size:28px;font-weight:900">18:25 <span style="font-size:14px">→</span> 22:05</div><div><span class="badge green">CI127 華航</span><span class="badge">16:00 再辦登機</span></div><p class="small">台北那班比高雄那班早 40 分，2 人先去辦，3 人再去辦，不用一起排。</p></div>
+    </div>
+    <div class="note">💡 回程小提醒：10:15 退房就直接提行李去機場，不用寄物櫃。11:10 到京成上野換回程實體票，換完直接進站。</div>
+  </div>
+
+  <!-- DAYS -->
+  <div class="card" id="days"><h2>🗓️ 每日行程</h2><p class="small">點上面日期切換，下面時間軸會彈一下。交通用彩色小標籤看，<span class="must">必去</span> 是這趟不能錯過的。</p>
+    <div class="tabs" id="tabs">
+      <button class="tab active" data-day="d1">Day1<small>12/2（三）到東京</small></button>
+      <button class="tab" data-day="d2">Day2<small>12/3（四）原宿・澀谷</small></button>
+      <button class="tab" data-day="d3">Day3<small>12/4（五）皇居・上野</small></button>
+      <button class="tab" data-day="d4">Day4<small>12/5（六）富士山</small></button>
+      <button class="tab" data-day="d5">Day5<small>12/6（日）卡丁車・SHIBUYA SKY</small></button>
+      <button class="tab" data-day="d6">Day6<small>12/7（一）鎌倉</small></button>
+      <button class="tab" data-day="d7">Day7<small>12/8（二）哈利波特</small></button>
+      <button class="tab" data-day="d8">Day8<small>12/9（三）回家</small></button>
+    </div>
+
+    <!-- D1 -->
+    <div class="day-panel active" id="d1">
+      <svg viewBox="0 0 720 120" width="100%" height="auto" class="floaty"><rect x="0" y="0" width="720" height="120" fill="#E3F2F8" rx="16"/><g><rect x="60" y="40" width="180" height="36" fill="#fff" stroke="#3E3A39" stroke-width="3" rx="10"/><circle cx="95" cy="82" r="14" fill="#fff" stroke="#3E3A39" stroke-width="3"/><circle cx="205" cy="82" r="14" fill="#fff" stroke="#3E3A39" stroke-width="3"/><text x="150" y="64" text-anchor="middle" font-size="14" font-weight="900">✈️ CI126</text></g><text x="380" y="68" font-size="16" font-weight="900">高雄 → 成田 → 中野</text><text x="380" y="90" font-size="13">先去住宿放行李，晚上吃牛重</text></svg>
+      <div class="timeline">
+        <div class="t-item"><span class="time">13:05</span><div class="title">高雄起飛 CI126 <span class="must">必去</span></div><span class="tag bus">✈️ 飛機</span><p>高雄 → 成田 17:25 到。5 人一起，機上先吃飽一點。</p></div>
+        <div class="t-item"><span class="time">17:25</span><div class="title">成田機場落地</div><span class="tag jr">JR / 利木津</span><p>拿行李、出關，直接去中野住宿，不在機場拖。</p></div>
+        <div class="t-item"><span class="time">20:00</span><div class="title">中野辦入住</div><span class="tag walk">🚶 徒歩</span><p>中野彌生町 2-19-1，放行李、休息一下。</p></div>
+        <div class="t-item"><span class="time">20:30</span><div class="title">晚餐・牛重 Gyushige</div><span class="tag walk">🚶 徒歩</span><span class="tag bus">🍖 燒肉</span><p>第一餐吃燒肉，台灣沒有分店，不用訂位，現場決定。</p></div>
+      </div>
+    </div>
+
+    <!-- D2 -->
+    <div class="day-panel" id="d2">
+      <svg viewBox="0 0 720 120" width="100%" height="auto" class="floaty"><rect x="0" y="0" width="720" height="120" fill="#FFF3C4" rx="16"/><path d="M80 95 L140 40 L200 95 Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/><rect x="120" y="70" width="40" height="25" fill="#fff" stroke="#3E3A39" stroke-width="3"/><text x="380" y="60" font-size="16" font-weight="900">明治神宮 ・ 原宿 ・ 澀谷</text><text x="380" y="84" font-size="13">EDW + 澀谷十字路口，晚上六本木</text></svg>
+      <div class="timeline">
+        <div class="t-item"><span class="time">09:00</span><div class="title">中野出發</div><span class="tag jr">JR 中央線</span><p>早餐前一晚在便利商店買好，早上直接出門。</p></div>
+        <div class="t-item"><span class="time">10:00</span><div class="title">明治神宮 <span class="must">必去</span></div><span class="tag walk">🚶 徒歩</span><p>大鳥居、森林參道，慢慢走，5 個人不要走散。</p></div>
+        <div class="t-item"><span class="time">11:20</span><div class="title">EDW・原宿逛街</div><span class="tag walk">🚶 徒歩</span><p>竹下通、表參道，買東西看時間就好。</p></div>
+        <div class="t-item"><span class="time">15:45</span><div class="title">澀谷十字路口・HACHI</div><span class="tag metro">🚇 地鐵</span><p>拍照、逛澀谷，SHIBUYA SKY 已經移到 12/6，這天不用趕。</p></div>
+        <div class="t-item"><span class="time">18:30</span><div class="title">六本木・茅乃舍 Kayanoya</div><span class="tag metro">🚇 地鐵</span><span class="tag bus">🛍️ 伴手禮</span><p>東京 Midtown B1F，買高湯包當伴手禮。</p></div>
+        <div class="t-item"><span class="time">20:30</span><div class="title">晚餐・鳥貴族 Torikizoku</div><span class="tag walk">🚶 徒歩</span><p>燒鳥串燒，便宜、不用訂位，5 人一起吃。</p></div>
+      </div>
+    </div>
+
+    <!-- D3 -->
+    <div class="day-panel" id="d3">
+      <svg viewBox="0 0 720 120" width="100%" height="auto" class="floaty"><rect x="0" y="0" width="720" height="120" fill="#EAF5E2" rx="16"/><circle cx="120" cy="60" r="32" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/><path d="M120 30 L135 55 L162 55 L140 72 L148 100 L120 84 L92 100 L100 72 L78 55 L105 55 Z" fill="#fff" stroke="#3E3A39" stroke-width="2"/><text x="380" y="60" font-size="16" font-weight="900">皇居乾通 ・ 上野 ・ 淺草</text><text x="380" y="84" font-size="13">早上看銀杏，晚上看球賽</text></svg>
+      <div class="timeline">
+        <div class="t-item"><span class="time">08:30</span><div class="title">中野出發・提早 30 分</div><span class="tag jr">JR 中央線</span><p>這天要趕 09:00 乾通開門，比平常早一點出門。</p></div>
+        <div class="t-item"><span class="time">09:00</span><div class="title">皇居乾通 <span class="must">必去</span></div><span class="tag walk">🚶 徒歩</span><span class="tag bus">🍂 銀杏</span><p>東京車站丸之內坂下門進 → 乾門出，750 公尺約 40 分，免費、不用預約，09:00-15:00 可進，15:30 要出來。</p></div>
+        <div class="t-item"><span class="time">10:30</span><div class="title">上野・阿美橫町</div><span class="tag jr">JR 山手線</span><p>東京 → 上野 8 分，逛阿美橫町。</p></div>
+        <div class="t-item"><span class="time">11:30</span><div class="title">午餐・鴨 to 蔥 Duck to Negi</div><span class="tag walk">🚶 徒歩</span><p>鴨肉蕎麥麵，排隊也值得，2 人不吃海鮮也可以吃。</p></div>
+        <div class="t-item"><span class="time">13:00</span><div class="title">淺草寺 Sensoji <span class="must">必去</span></div><span class="tag metro">🚇 地鐵</span><p>雷門拍照，仲見世通逛一下。</p></div>
+        <div class="t-item"><span class="time">13:30</span><div class="title">淺草炸肉餅 Asakusa Menchi</div><span class="tag walk">🚶 徒歩</span><p>現炸肉餅，邊走邊吃。</p></div>
+        <div class="t-item"><span class="time">14:00</span><div class="title">晴空塔 Skytree</div><span class="tag metro">🚇 地鐵</span><p>外面拍照就好，不用一定要上去。</p></div>
+        <div class="t-item"><span class="time">18:00</span><div class="title">晚餐・餃子 Gyoza</div><span class="tag walk">🚶 徒歩</span><p>餃子專門店，便宜好吃。</p></div>
+        <div class="t-item"><span class="time">晚上</span><div class="title">球賽 <span class="must">必去</span></div><span class="tag metro">🚇 地鐵</span><p>晚上看球賽，球賽是晚上，早上乾通不會撞到。</p></div>
+      </div>
+    </div>
+
+    <!-- D4 -->
+    <div class="day-panel" id="d4">
+      <svg viewBox="0 0 720 120" width="100%" height="auto" class="floaty"><rect x="0" y="0" width="720" height="120" fill="#E3F2F8" rx="16"/><path d="M60 95 L200 30 L340 95 Z" fill="#fff" stroke="#3E3A39" stroke-width="3"/><path d="M200 30 L250 75 L200 75 Z" fill="#A8D3E6" stroke="#3E3A39" stroke-width="3"/><text x="420" y="60" font-size="16" font-weight="900">富士山一日遊</text><text x="420" y="84" font-size="13">新宿出發，巴士一日遊</text></svg>
+      <div class="timeline">
+        <div class="t-item"><span class="time">06:50</span><div class="title">中野出發</div><span class="tag jr">JR</span><p>這天最早，鬧鐘要設好。</p></div>
+        <div class="t-item"><span class="time">07:50</span><div class="title">新宿 Cocoon Tower 集合</div><span class="tag walk">🚶 徒歩</span><p>富士山一日遊集合點，不要遲到。</p></div>
+        <div class="t-item"><span class="time">08:00</span><div class="title">富士山一日遊 <span class="must">必去</span></div><span class="tag bus">🚌 巴士</span><p>KKday 一日遊，整天跟著巴士走。</p></div>
+        <div class="t-item"><span class="time">19:30</span><div class="title">晚餐・Center Beef</div><span class="tag jr">JR</span><p>回新宿吃 Center Beef 燒肉，肉很有品質。</p></div>
+      </div>
+    </div>
+
+    <!-- D5 -->
+    <div class="day-panel" id="d5">
+      <svg viewBox="0 0 720 120" width="100%" height="auto" class="floaty"><rect x="0" y="0" width="720" height="120" fill="#FFE9E3" rx="16"/><g><rect x="60" y="60" width="110" height="28" fill="#F6D27A" stroke="#3E3A39" stroke-width="3" rx="10"/><circle cx="82" cy="92" r="12" fill="#fff" stroke="#3E3A39" stroke-width="3"/><circle cx="150" cy="92" r="12" fill="#fff" stroke="#3E3A39" stroke-width="3"/><text x="115" y="78" text-anchor="middle" font-size="12" font-weight="900">KART</text></g><text x="380" y="60" font-size="16" font-weight="900">卡丁車 ・ SHIBUYA SKY 日落</text><text x="380" y="84" font-size="13">這趟最擠的一天，提早 30 分到</text></svg>
+      <div class="timeline">
+        <div class="t-item"><span class="time">08:30</span><div class="title">出發・新宿</div><span class="tag jr">JR</span><p>帶台灣駕照正本 + 日文譯本，卡丁車要用。</p></div>
+        <div class="t-item"><span class="time">10:00</span><div class="title">卡丁車 Japankart <span class="must">必去</span></div><span class="tag bus">🏎️ 卡丁車</span><p>新宿卡丁車，開在東京街頭，超好玩。</p></div>
+        <div class="t-item"><span class="time">13:30</span><div class="title">午餐・京都勝牛 Kyoto Katsugyu</div><span class="tag metro">🚇 地鐵</span><p>秋葉原炸牛排，外酥內半生，自己在石板上烤，沾 5 種醬吃。</p></div>
+        <div class="t-item"><span class="time">14:30</span><div class="title">Surugaya 秋葉原</div><span class="tag walk">🚶 徒歩</span><p>逛到 15:30 就走，不要逛到忘記時間。</p></div>
+        <div class="t-item"><span class="time">15:50</span><div class="title">提早到 SHIBUYA SKY 樓下</div><span class="tag metro">🚇 地鐵</span><p>16:20 場次，15:50 就要到，排電梯。</p></div>
+        <div class="t-item"><span class="time">16:20</span><div class="title">SHIBUYA SKY 日落 <span class="must">必去</span></div><span class="tag metro">🚇 地鐵</span><span class="tag bus">🌇 日落</span><p>日落時段最擠，上面風大，帽子圍巾帶好，腳架不能帶。先看一圈，等 16:30 日落那 10 分鐘再去擠玻璃牆。</p></div>
+        <div class="t-item"><span class="time">19:00</span><div class="title">晚餐・牛舌の檸檬 Gyutan no Lemon</div><span class="tag metro">🚇 地鐵</span><p>牛舌專門店。如果排隊太久，就改去牛舌 Biyori 淺草橋站，不用硬排。</p></div>
+        <div class="t-item"><span class="time">17:30 備案</span><div class="title">親子丼・鳥恒 Toritsune（備案）</div><span class="tag walk">🚶 徒歩</span><p>如果時間有空，17:30 可以去吃親子丼，不然就直接去吃牛舌。</p></div>
+      </div>
+      <div class="note">🎫 搶票：11/21 晚上 23:00 台灣時間搶 12/6 的票。16:20 沒了就拿 15:40 / 16:00 / 16:40。12/6 沒搶到，11/23 晚上再搶 12/8 的備案。</div>
+    </div>
+
+    <!-- D6 -->
+    <div class="day-panel" id="d6">
+      <svg viewBox="0 0 720 120" width="100%" height="auto" class="floaty"><rect x="0" y="0" width="720" height="120" fill="#EAF5E2" rx="16"/><rect x="80" y="35" width="70" height="55" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3" rx="10"/><circle cx="115" cy="48" r="12" fill="#fff" stroke="#3E3A39" stroke-width="3"/><text x="380" y="60" font-size="16" font-weight="900">鎌倉 ・ 大佛 ・ 長谷寺</text><text x="380" y="84" font-size="13">小町通吃午餐，草莓冰淇淋餅乾</text></svg>
+      <div class="timeline">
+        <div class="t-item"><span class="time">08:30</span><div class="title">中野出發・鎌倉</div><span class="tag jr">JR 湘南新宿線</span><p>坐到鎌倉，車上休息一下。</p></div>
+        <div class="t-item"><span class="time">10:00</span><div class="title">鎌倉大佛 <span class="must">必去</span></div><span class="tag walk">🚶 徒歩</span><p>高德院大佛，鎌倉地標。</p></div>
+        <div class="t-item"><span class="time">11:00</span><div class="title">長谷寺 Hasedera</div><span class="tag walk">🚶 徒歩</span><p>繡球花寺，看海景。</p></div>
+        <div class="t-item"><span class="time">12:30</span><div class="title">小町通午餐</div><span class="tag walk">🚶 徒歩</span><p>小町通邊走邊吃，午餐彈性決定。</p></div>
+        <div class="t-item"><span class="time">下午</span><div class="title">Long Track Foods 草莓冰淇淋餅乾</div><span class="tag walk">🚶 徒歩</span><p>鎌倉必吃甜點，草莓冰淇淋夾餅乾。</p></div>
+        <div class="t-item"><span class="time">19:30</span><div class="title">回中野・休息</div><span class="tag jr">JR</span><p>回中野休息，隔天哈利波特要早起。</p></div>
+      </div>
+    </div>
+
+    <!-- D7 -->
+    <div class="day-panel" id="d7">
+      <svg viewBox="0 0 720 120" width="100%" height="auto" class="floaty"><rect x="0" y="0" width="720" height="120" fill="#FFF3C4" rx="16"/><path d="M80 95 L120 40 L160 95 Z" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/><circle cx="120" cy="52" r="8" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/><text x="380" y="60" font-size="16" font-weight="900">哈利波特影城</text><text x="380" y="84" font-size="13">玩到 15:00，晚上池袋吃飯</text></svg>
+      <div class="timeline">
+        <div class="t-item"><span class="time">08:30</span><div class="title">中野出發</div><span class="tag jr">JR</span><p>豐島園方向，哈利波特影城。</p></div>
+        <div class="t-item"><span class="time">09:30</span><div class="title">哈利波特影城 <span class="must">必去</span></div><span class="tag metro">🚇 地鐵</span><p>玩到 15:00，裡面很大，慢慢逛。</p></div>
+        <div class="t-item"><span class="time">15:00</span><div class="title">一蘭屋 Ichikakuya（池袋）</div><span class="tag metro">🚇 地鐵</span><p>池袋拉麵。如果 12/6 沒搶到 SHIBUYA SKY，這間放掉，直接去澀谷。</p></div>
+        <div class="t-item"><span class="time">18:00</span><div class="title">晚餐・內立屋 Uchitateya</div><span class="tag walk">🚶 徒歩</span><p>池袋晚餐，內立屋。如果改成 SHIBUYA SKY 備案，這間延到 18:30-19:00。</p></div>
+        <div class="t-item"><span class="time">備案 16:20</span><div class="title">SHIBUYA SKY 備案（12/8）</div><span class="tag metro">🚇 地鐵</span><p>只有 12/6 沒搶到才用這天。哈利波特 15:00 走 → 澀谷 SHIBUYA SKY 16:20 → 回池袋吃內立屋。</p></div>
+      </div>
+    </div>
+
+    <!-- D8 -->
+    <div class="day-panel" id="d8">
+      <svg viewBox="0 0 720 120" width="100%" height="auto" class="floaty"><rect x="0" y="0" width="720" height="120" fill="#E3F2F8" rx="16"/><g><rect x="60" y="50" width="150" height="30" fill="#fff" stroke="#3E3A39" stroke-width="3" rx="10"/><text x="135" y="70" text-anchor="middle" font-size="13" font-weight="900">Skyliner</text></g><text x="380" y="60" font-size="16" font-weight="900">中野 → 成田 → 回家</text><text x="380" y="84" font-size="13">提著行李直接去機場</text></svg>
+      <div class="timeline">
+        <div class="t-item"><span class="time">10:15</span><div class="title">中野退房</div><span class="tag walk">🚶 徒歩</span><p>提著行李直接去機場，不用寄物櫃。</p></div>
+        <div class="t-item"><span class="time">11:10</span><div class="title">京成上野換回程票</div><span class="tag metro">🚇 地鐵</span><p>車程 40 分 + 找路 15 分，5 人提行李慢慢走。</p></div>
+        <div class="t-item"><span class="time">12:00</span><div class="title">Skyliner 上野 → 成田</div><span class="tag bus">🚆 Skyliner</span><p>12:00 出發，約 12:40 到成田第 2 航廈。</p></div>
+        <div class="t-item"><span class="time">13:00</span><div class="title">午餐・成田機場第 2 航廈</div><span class="tag walk">🚶 徒歩</span><p>機場吃午餐，彈性決定。</p></div>
+        <div class="t-item"><span class="time">15:30</span><div class="title">集合辦登機</div><span class="tag walk">🚶 徒歩</span><p>2 人先去辦 CI105，3 人再去辦 CI127。</p></div>
+        <div class="t-item"><span class="time">17:45</span><div class="title">2 人 CI105 成田 → 台北 20:55</div><span class="tag bus">✈️ 飛機</span></div>
+        <div class="t-item"><span class="time">18:25</span><div class="title">3 人 CI127 成田 → 高雄 22:05</div><span class="tag bus">✈️ 飛機</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STAY -->
+  <div class="card" id="stay"><h2>🏠 住宿資訊</h2>
+    <div class="grid2">
+      <div><h3>中野・彌生町 7 晚</h3><p><b>地址：</b>中野區彌生町 2-19-1<br><b>入住：</b>12/2 20:00<br><b>退房：</b>12/9 10:15<br><b>總價：</b>NT$66,775（每人 NT$13,355）<br><b>狀態：</b>已訂</p><p class="small">5 個人一起住，不拆開。早餐前一晚在便利商店買好。</p></div>
+      <div><h3>費用明細</h3><table><tr><th>項目</th><th>5 人總價</th></tr><tr><td>住宿 7 晚</td><td>NT$66,775</td></tr><tr><td>富士山 KKday</td><td>NT$5,645</td></tr><tr><td>卡丁車</td><td>NT$10,436</td></tr><tr><td>哈利波特</td><td>NT$6,018</td></tr><tr><td>Skyliner + 地鐵 72h</td><td>NT$6,046</td></tr><tr><td>SHIBUYA SKY</td><td>約 NT$3,570</td></tr><tr><td>機票 3 人高雄</td><td>NT$53,283</td></tr><tr><td>機票 2 人台北</td><td>NT$31,016</td></tr><tr><td><b>總計</b></td><td><b>NT$182,789</b></td></tr></table></div>
+    </div>
+    <div class="note">💰 公費：NT$24,000，共同基金只付大餐，不夠的再另外各付各的。每個人自己付自己的花費。</div>
+  </div>
+
+  <!-- LISTS -->
+  <div class="card" id="list"><h2>✅ 待辦清單</h2><p class="small">點一下可以打勾，打勾的會留在手機裡。SHIBUYA SKY 搶票有設通知了。</p>
+    <div id="todo">
+      <label class="check"><input type="checkbox"><div><b>搶 SHIBUYA SKY 12/6 禮拜天 16:20</b><span>11/21 晚上 23:00 台灣時間，官網 + Klook 一起開，5 人。備案 15:40 / 16:00 / 16:40</span></div></label>
+      <label class="check"><input type="checkbox"><div><b>搶 SHIBUYA SKY 12/8 禮拜二 16:20（備案）</b><span>11/23 晚上 23:00 台灣時間，只有 12/6 沒搶到才搶這天</span></div></label>
+      <label class="check"><input type="checkbox"><div><b>確認 5 人護照效期</b><span>SHIBUYA SKY 入場要帶全員護照正本</span></div></label>
+      <label class="check"><input type="checkbox"><div><b>台灣駕照正本 + 監理站日文譯本</b><span>卡丁車要用，12/6 帶著</span></div></label>
+      <label class="check"><input type="checkbox"><div><b>換日幣現金</b><span>上次沖繩 5 天 2 人帶 10 萬日幣還剩 2-3 千，這次 5 人、8 天，自己花的部分先抓 10-12 萬日幣</span></div></label>
+      <label class="check"><input type="checkbox"><div><b>準備公費 NT$24,000</b><span>只付大餐，額外各付各的</span></div></label>
+    </div>
+    <h3>🧳 出發前清單</h3>
+    <div id="pre">
+      <label class="check"><input type="checkbox"><div><b>護照</b><span>效期確認 + 影本拍起來</span></div></label>
+      <label class="check"><input type="checkbox"><div><b>機票・住宿確認信</b><span>截圖存在手機裡</span></div></label>
+      <label class="check"><input type="checkbox"><div><b>網卡 / eSIM</b><span>落地就能用</span></div></label>
+      <label class="check"><input type="checkbox"><div><b>行動電源 + 充電線</b><span>整天拍照會沒電</span></div></label>
+      <label class="check"><input type="checkbox"><div><b>IC 卡（Suica / Pasmo）</b><span>72h 票過期後都要刷 IC 卡</span></div></label>
+    </div>
+    <h3>🎒 行李清單</h3>
+    <div class="grid2">
+      <div><h3>衣服</h3><label class="check"><input type="checkbox"><div><b>保暖外套 + 圍巾 + 帽子</b><span>SHIBUYA SKY 上面風很大</span></div></label><label class="check"><input type="checkbox"><div><b>好走的鞋</b><span>每天走很多路</span></div></label><label class="check"><input type="checkbox"><div><b>輕便雨具</b><span>12 月東京可能下雨</span></div></label></div>
+      <div><h3>日用品</h3><label class="check"><input type="checkbox"><div><b>藥品・口罩</b><span>感冒藥、腸胃藥</span></div></label><label class="check"><input type="checkbox"><div><b>保濕・護唇膏</b><span>冬天很乾</span></div></label><label class="check"><input type="checkbox"><div><b>大購物袋</b><span>伴手禮很多</span></div></label></div>
+    </div>
+    <p class="small">小提醒：72h 地鐵票從 Day2 早上 09:00 第一次刷卡開始算，用到 Day5 早上 09:00 過期，Day5 之後都要刷 IC 卡。</p>
+  </div>
+
+  <div class="card"><h2>🍜 吃飯小規則</h2><ul><li>2 人不吃海鮮，點餐避開海鮮。</li><li>餐廳都沒有台灣分店，便宜但肉要有品質，不用訂位。</li><li>牛舌の檸檬如果排隊太久，就改去牛舌 Biyori 淺草橋站。</li><li>Day5 17:30 鳥恒親子丼是備案，有時間再去。</li></ul>
+  <div class="note">這本手冊是給 5 個人看的，直接傳連結就可以開，不用下載。</div></div>
+
+  <div class="footer">東京之旅 12/2-12/9 ・ 中野出發 ・ 5 人一起走<br>made with ♥ in 繪本風</div>
+</div>
+
+<script>
+const target = new Date('2026-12-02T13:05:00+08:00').getTime();
+function tick(){
+  const now = Date.now(); let diff = target - now;
+  if(diff<0) diff=0;
+  const d=Math.floor(diff/86400000), h=Math.floor(diff%86400000/3600000), m=Math.floor(diff%3600000/60000), s=Math.floor(diff%60000/1000);
+  document.getElementById('cd-d').textContent=d;
+  document.getElementById('cd-h').textContent=h;
+  document.getElementById('cd-m').textContent=m;
+  document.getElementById('cd-s').textContent=s;
+  document.getElementById('cd-label').textContent = diff===0 ? '已經出發了！玩得開心！' : '出發日 12/2（三）13:05 CI126 高雄 → 成田';
+}
+tick(); setInterval(tick,1000);
+// tabs
+document.querySelectorAll('.tab').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.day-panel').forEach(p=>p.classList.remove('active'));
+    const el=document.getElementById(btn.dataset.day);
+    el.classList.add('active');
+    el.scrollIntoView({behavior:'smooth',block:'nearest'});
+  });
+});
+// checklist
+document.querySelectorAll('.check').forEach((label,idx)=>{
+  const cb=label.querySelector('input');
+  const key='tokyo-check-'+idx;
+  if(localStorage.getItem(key)==='1'){cb.checked=true;label.classList.add('done')}
+  cb.addEventListener('change',()=>{label.classList.toggle('done',cb.checked); localStorage.setItem(key, cb.checked?'1':'0')});
+});
+</script>
+</body>
+</html>
